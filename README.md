@@ -5,7 +5,7 @@
 You are working at an enterprise solution company.
 A new client approaches you for
 an [ERP](https://en.wikipedia.org/wiki/Enterprise_resource_planning)
-software they need for the administration of 
+software they need for the administration of
 their daily operations. Naturally, you have multiple
 complex solutions for this job.
 
@@ -92,3 +92,9 @@ https://classroom.github.com/g/3yyqjVK7
 - :exclamation: [File handling](https://learn.code.cool/codecool-graph/#/../pages/python/file-handling)
 - :exclamation: [Magic numbers](https://learn.code.cool/codecool-graph/#/../pages/general/magic-numbers)
 - :exclamation: [Clean code](https://learn.code.cool/codecool-graph/#/../pages/general/clean-code)
+
+
+## Acceptance review
+
+You will need this only at review time, **after** completing the project.
+[Use this form](https://forms.gle/uYZGPN56qwmSUDDV9) to record the review you provide for your peer.
