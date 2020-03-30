@@ -98,3 +98,7 @@ https://classroom.github.com/g/3yyqjVK7
 
 You will need this only at review time, **after** completing the project.
 [Use this form](https://forms.gle/uYZGPN56qwmSUDDV9) to record the review you provide for your peer.
+
+## Link to plan
+
+https://docs.google.com/spreadsheets/d/1I1cUkaCFO3oDl0IdBe-qd7KSnHsD23Lr4fKthi6xveA/edit?usp=sharing
