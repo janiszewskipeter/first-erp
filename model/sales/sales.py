@@ -12,3 +12,11 @@ from model import data_manager, util
 
 DATAFILE = "model/sales/sales.csv"
 HEADERS = ["Id", "Customer", "Product", "Price", "Date"]
+
+data = data_manager.read_table_from_file(DATAFILE, separator=';')
+data.reverse()
+data.append(HEADERS)
+data.reverse()
+
+
+print(data)
