@@ -12,3 +12,8 @@ from model import data_manager, util
 
 DATAFILE = "model/hr/hr.csv"
 HEADERS = ["Id", "Name", "Date of birth", "Department", "Clearance"]
+#data = data_manager.read_table_from_file("model/hr/hr.csv", separator=';')
+def get_data():
+    data = data_manager.read_table_from_file(DATAFILE, separator=';')
+    data.insert(0, HEADERS)
+    return data
