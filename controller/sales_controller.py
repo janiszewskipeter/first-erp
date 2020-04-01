@@ -3,12 +3,23 @@ from view import terminal as view
 
 
 def list_transactions():
-    view.print_error_message("Not implemented yet.")
+    data = sales.data_export()
+    view.print_table(data)
+    #view.print_general_results(data, label)
 
 
 def add_transaction():
-    view.print_error_message("Not implemented yet.")
+    data= sales.data_export()
 
+    Id = sales.get_Id()
+    customer = get_input('Enter Customer:\n')
+    product = get_input('Enter Product:\n')
+    price = get_input('Enter Price:\n')
+    date = get_input('Enter Date:\n')
+    item_to_add = [Id, customer, product, price, date]
+    data = data.append(item_to_add)
+
+    return data
 
 def update_transaction():
     view.print_error_message("Not implemented yet.")
@@ -79,3 +90,5 @@ def menu():
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+
+list_transactions()
