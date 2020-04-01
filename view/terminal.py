@@ -1,6 +1,9 @@
 from tabulate import tabulate
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 528cbc6a47a227e54b49718c66d8b75f6d7318f7
 def print_menu(title, list_options):
     """Prints options in standard menu format like this:
 
@@ -62,13 +65,13 @@ def print_general_results(result, label):
 # |--------|------------|----------|
 # |   1    | Sidewinder | missile  |
 # \-----------------------------------/
-def print_table(table):
+def print_table(table): # Grzesiek
     """Prints tabular data like above.
 
     Args:
         table: list of lists - the table to print out
     """
-    pass
+    print(tabulate(table, headers, tablefmt="pretty"))
 
 
 def get_input(label):

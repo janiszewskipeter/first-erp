@@ -12,3 +12,9 @@ from model import data_manager, util
 
 DATAFILE = "model/crm/crm.csv"
 HEADERS = ["id", "name", "email", "subscribed"]
+
+table = data_manager.read_table_from_file(DATAFILE, separator=";")
+table[0] = HEADERS
+
+
+
