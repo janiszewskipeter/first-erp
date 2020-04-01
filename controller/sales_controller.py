@@ -4,7 +4,9 @@ from view import terminal as view
 
 def list_transactions():
     data = sales.data_export()
-    view.print_general_results(data, label)
+    view.print_table(data)
+    #view.print_general_results(data, label)
+
 
 def add_transaction():
     data= sales.data_export()
@@ -88,3 +90,5 @@ def menu():
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
+
+list_transactions()
