@@ -90,5 +90,3 @@ def menu():
             run_operation(int(operation))
         except KeyError as err:
             view.print_error_message(err)
-
-list_transactions()
