@@ -3,26 +3,40 @@ from view import terminal as view
 
 
 def list_transactions():
-    data = sales.data_export()
-    view.print_table(data)
-    #view.print_general_results(data, label)
-
+    data_headers = list(sales.data_read())
+    data = data_headers[0]
+    headers = data_headers[1]
+    view.print_table(data, headers)
 
 def add_transaction():
-    data= sales.data_export()
-
+    data = list(sales.data_read())
+    data = data[0]
     Id = sales.get_Id()
-    customer = get_input('Enter Customer:\n')
-    product = get_input('Enter Product:\n')
-    price = get_input('Enter Price:\n')
-    date = get_input('Enter Date:\n')
+    customer = view.get_input('Enter Customer:\n')
+    product = view.get_input('Enter Product:\n')
+    price = view.get_input('Enter Price:\n')
+    date = view.get_input('Enter Date:\n')
     item_to_add = [Id, customer, product, price, date]
-    data = data.append(item_to_add)
-
-    return data
+    data.append(item_to_add)
+    sales.data_write(data)
 
 def update_transaction():
-    view.print_error_message("Not implemented yet.")
+    data = list(sales.data_read())
+    data = data[0]
+    Ids = [i[0] for i in data]
+    print(Ids)
+    Id = view.get_input('Enter Id:\n')
+    if Id not in Ids:
+        view.print_message("No such Id.")
+        return
+    index = data.index(Id)
+    customer = view.get_input('Enter Customer:\n')
+    product = view.get_input('Enter Product:\n')
+    price = view.get_input('Enter Price:\n')
+    date = view.get_input('Enter Date:\n')
+    item_to_add = [Id, customer, product, price, date]
+    data[index] = item_to_add
+    sales.data_write(data)
 
 
 def delete_transaction():
@@ -30,11 +44,33 @@ def delete_transaction():
 
 
 def get_biggest_revenue_transaction():
-    view.print_error_message("Not implemented yet.")
-
+    data = list(sales.data_read())
+    data = data[0]
+    headers = data[1]
+    print(headers)
+    prices = [i[3] for i in data]
+    max_price = max(prices)
+    index = prices.index(max_price)
+    data = data[index]
+    view.print_table(data, headers)
 
 def get_biggest_revenue_product():
-    view.print_error_message("Not implemented yet.")
+    data = list(sales.data_read())
+    data = data[0]
+    headers = data[1]
+    products= [i[2] for i in data]
+    prices = [i[3] for i in data]
+    revenues = [products.count(i) for i in products]
+    jajko = zip(products, revenues)
+    jajko2 = tuple(jajko)
+    print(jajko2)
+    # for product in products:
+    #     revenue = products.count(product) * prices[products.index(product)]
+
+    # index = max(revenues)
+    # print(index)
+    # result = products[index]
+    # view.print_message(result)
 
 
 def count_transactions_between():
