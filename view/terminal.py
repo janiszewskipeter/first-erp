@@ -58,12 +58,12 @@ def print_general_results(result, label):
 # |--------|------------|----------|
 # |   1    | Sidewinder | missile  |
 # \-----------------------------------/
-def print_table(table, headers):
+def print_table(table):
     """Prints tabular data like above.
     Args:
         table: list of lists - the table to print out
     """
-    print(tabulate(table, headers, tablefmt="pretty"))
+    print(tabulate(table, tablefmt="pretty"))
 
 
 def get_input(label):

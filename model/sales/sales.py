@@ -13,12 +13,15 @@ from model import data_manager, util
 DATAFILE = "model/sales/sales.csv"
 HEADERS = ["Id", "Customer", "Product", "Price", "Date"]
 
+
 def data_read():
     data = data_manager.read_table_from_file(DATAFILE, separator=';')
     return data, HEADERS
 
+
 def get_Id():
     return util.generate_id()
+
 
 def data_write(data):
     data_manager.write_table_to_file(DATAFILE, data, separator=';')
