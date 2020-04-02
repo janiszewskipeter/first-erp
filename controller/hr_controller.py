@@ -3,27 +3,118 @@ from view import terminal as view
 
 
 def list_employees():
-    view.print_error_message("Not implemented yet.")
+    data_headers = list(hr.data_read())
+    data = data_headers[0]
+    headers = data_headers[1]
+    view.print_table(data,headers)
 
 
 def add_employee():
+    data = list(hr.data_read())
+    data = data[0]
+    ID = hr.get_ID()
+    name = input("Enter name:\n")
+    date_of_birth = input("Enter date of birth:\n")
+    department = input("Enter department:\n")
+    clearance = input("Enter level of clearance:\n")
+    adding = [ID, name, date_of_birth, department, clearance]
+    data.append(adding)
+    hr.data_write(data)
+
+
+def update_employee(): #does not work and makes no sense
     view.print_error_message("Not implemented yet.")
-
-
-def update_employee():
-    view.print_error_message("Not implemented yet.")
-
+    '''
+    data = list(hr.data_read())
+    data = data[0]
+    print(data)
+    ids = []
+    for elem in data:
+        for i in range(len(elem)):
+            ident = elem[i][0]
+            ids.append(ident)
+    print(ids)
+    ID = view.get_input('Enter ID:\n')
+    if ID in ids:
+        index = data.index(ID)
+        name = view.get_input("Enter name:\n")
+        date_of_birth = view.get_input("Enter date of birth:\n")
+        department = view.get_input("Enter department:\n")
+        clearance = view.get_input("Enter level of clearance:\n")
+        adding = [ID, name, date_of_birth, department, clearance]
+        data[index] = adding
+        hr.data_write(data)
+        list_employees()
+        
+    else:
+        view.print_message("ID does not exist in the database.")
+        return
+'''
 
 def delete_employee():
-    view.print_error_message("Not implemented yet.")
+    data_headers = list(hr.data_read())
+    data = data_headers[0]
+    print(data)
+    to_del = int(input("Select employee to delete:\n"))
+    del data[to_del-1]
+    hr.data_write(data)
 
 
 def get_oldest_and_youngest():
-    view.print_error_message("Not implemented yet.")
-
-
+    data_headers = list(hr.data_read())
+    data = data_headers[0]
+    headers = data_headers[1]
+    print(len(data))
+    j = 0
+    birthdays = []
+    for i in data:
+        elements = data[0+j]
+        dates = elements[2]
+        date = dates.split("-")
+        birthdays.append(date)
+        j+=1
+    a = 0
+    years = []
+    for day in birthdays:
+        elem = birthdays[0+a]
+        year = elem[0]
+        years.append(int(year))
+        a+=1
+    oldest = min(years)
+    youngest = max(years)
+    index = years.index(oldest)
+    index_young = years.index(youngest)
+    print("The oldest employee is:")
+    view.print_table([data[index]],headers)
+    print("")
+    print("The youngest employee is:")
+    view.print_table([data[index_young]], headers)
 def get_average_age():
-    view.print_error_message("Not implemented yet.")
+    data_headers = list(hr.data_read())
+    data = data_headers[0]
+    headers = data_headers[1]
+    j = 0
+    birthdays = []
+    for i in data:
+        elements = data[0+j]
+        dates = elements[2]
+        date = dates.split("-")
+        birthdays.append(date)
+        j+=1
+    a = 0
+    years = []
+    for day in birthdays:
+        elem = birthdays[0+a]
+        year = elem[0]
+        years.append(int(year))
+        a+=1
+    ages = []
+    for elem in years:
+        age = 2020 - elem
+        ages.append(age)
+    average = sum(ages)/len(ages)
+    print("The average age of employees is:")
+    print(average)
 
 
 def next_birthdays():
