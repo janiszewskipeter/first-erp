@@ -22,39 +22,30 @@ def add_employee():
     hr.data_write(data)
 
 
-def update_employee(): #does not work and makes no sense
+def update_employee():
     view.print_error_message("Not implemented yet.")
     '''
     data = list(hr.data_read())
     data = data[0]
-    print(data)
-    ids = []
-    for elem in data:
-        for i in range(len(elem)):
-            ident = elem[i][0]
-            ids.append(ident)
-    print(ids)
-    ID = view.get_input('Enter ID:\n')
-    if ID in ids:
-        index = data.index(ID)
-        name = view.get_input("Enter name:\n")
-        date_of_birth = view.get_input("Enter date of birth:\n")
-        department = view.get_input("Enter department:\n")
-        clearance = view.get_input("Enter level of clearance:\n")
-        adding = [ID, name, date_of_birth, department, clearance]
-        data[index] = adding
-        hr.data_write(data)
-        list_employees()
-        
-    else:
-        view.print_message("ID does not exist in the database.")
+    ids = [i[0] for i in data]
+    Id = view.get_input('Enter Id:\n')
+    if Id not in Ids:
+        view.print_message("No such Id.")
         return
-'''
+    index = ids.index(Id)
+    name = input("Enter name:\n")
+    date_of_birth = input("Enter date of birth:\n")
+    department = input("Enter department:\n")
+    clearance = input("Enter level of clearance:\n")
+    item_to_add = [Id, customer, product, price, date]
+    data[index] = item_to_add
+    hr.data_write(data)
+    '''
+
 
 def delete_employee():
     data_headers = list(hr.data_read())
     data = data_headers[0]
-    print(data)
     to_del = int(input("Select employee to delete:\n"))
     del data[to_del-1]
     hr.data_write(data)
@@ -114,7 +105,7 @@ def get_average_age():
         ages.append(age)
     average = sum(ages)/len(ages)
     print("The average age of employees is:")
-    print(average)
+    print(round(average,2))
 
 
 def next_birthdays():
