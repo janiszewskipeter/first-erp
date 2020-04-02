@@ -58,7 +58,11 @@ def print_general_results(result, label):
 # |--------|------------|----------|
 # |   1    | Sidewinder | missile  |
 # \-----------------------------------/
+<<<<<<< HEAD
 def print_table(table, headers): # Grzesiek
+=======
+def print_table(table):
+>>>>>>> 5d6c10897a4a88fd49d56f27f1ed214e5c99d623
     """Prints tabular data like above.
     Args:
         table: list of lists - the table to print out
@@ -74,6 +78,12 @@ def get_input(label):
     return input(label)
 
 # def get_inputs(labels):
+    labels = ['Enter Customer:\n','Enter Customer:\n','Enter Customer:\n','Enter Customer:\n']
+    val1 = imput(labels[0])
+
+    return [val1,val1,val1,val1,]
+
+
 #     """Gets a list of string inputs from the user.
 
 #     Args:

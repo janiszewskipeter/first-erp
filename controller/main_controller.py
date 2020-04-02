@@ -29,13 +29,9 @@ def menu():
         display_menu()
         try:
             option = int(view.get_input("Select module"))
-            print(option)
             load_module(int(option))
         except KeyError:
             view.print_error_message("There is no such option!")
         except ValueError:
-            view.print_error_message("Please enter a number!")
-        if option == '0':
-            view.print_message("Good-bye!")
-            break
-        
+             view.print_error_message("Please enter a number!")
+    view.print_message("Good-bye!")

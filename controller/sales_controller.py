@@ -1,49 +1,98 @@
 from model.sales import sales
 from view import terminal as view
 
-
 def list_transactions():
-    data = sales.data_export()
-    view.print_table(data)
-    #view.print_general_results(data, label)
-
+    data_headers = list(sales.data_read())
+    data = data_headers[0]
+    headers = data_headers[1]
+    view.print_table(data, headers)
 
 def add_transaction():
-    data= sales.data_export()
-
+    data = list(sales.data_read())
+    data = data[0]
     Id = sales.get_Id()
-    customer = get_input('Enter Customer:\n')
-    product = get_input('Enter Product:\n')
-    price = get_input('Enter Price:\n')
-    date = get_input('Enter Date:\n')
+    customer = view.get_input('Enter Customer:\n')
+    product = view.get_input('Enter Product:\n')
+    price = view.get_input('Enter Price:\n')
+    date = view.get_input('Enter Date:\n')
     item_to_add = [Id, customer, product, price, date]
-    data = data.append(item_to_add)
-
-    return data
+    data.append(item_to_add)
+    sales.data_write(data)
 
 def update_transaction():
-    view.print_error_message("Not implemented yet.")
-
-
+    data = list(sales.data_read())
+    data = data[0]
+    ids = [i[0] for i in data]
+    Id = view.get_input('Enter Id:\n')
+    if Id not in Ids:
+        view.print_message("No such Id.")
+        return
+    index = ids.index(Id)
+    customer = view.get_input('Enter Customer:\n')
+    product = view.get_input('Enter Product:\n')
+    price = view.get_input('Enter Price:\n')
+    date = view.get_input('Enter Date:\n')
+    item_to_add = [Id, customer, product, price, date]
+    data[index] = item_to_add
+    sales.data_write(data)
+    
 def delete_transaction():
-    view.print_error_message("Not implemented yet.")
-
-
+    data = list(sales.data_read())
+    print(data)
+    data = data[0] 
+    headers = data[1]
+    id_to_delete = view.get_input('Enter Id to delete:\n')
+    ids = [i[0] for i in data]
+    index = ids.index(id_to_delete)
+    del data[index]
+    sales.data_write(data)
+    
 def get_biggest_revenue_transaction():
-    view.print_error_message("Not implemented yet.")
-
+    data = list(sales.data_read())
+    data = data[0]
+    headers = data[1]
+    prices = [float(i[3]) for i in data]
+    max_price = max(prices)
+    index = prices.index(max_price)
+    data = data[index]
+    view.print_table(data, headers)
 
 def get_biggest_revenue_product():
-    view.print_error_message("Not implemented yet.")
-
-
+    data = list(sales.data_read())
+    data = data[0]
+    headers = data[1]
+    revenues = []
+    products= [i[2] for i in data]
+    prices = [float(i[3]) for i in data]
+    quantity = [int(products.count(i)) for i in products]
+    revenues = [i * quantity[prices.index(i)] for i in prices]
+    max_rerevenue_index = revenues.index(max(revenues))
+    result = products[max_rerevenue_index]
+    view.print_message(result)
+    
 def count_transactions_between():
-    view.print_error_message("Not implemented yet.")
-
+    start_date = view.get_input('Enter start date')
+    end_date = view.get_input('Enter end date')
+    data = list(sales.data_read())
+    data = data[0]
+    dates = [start_date,end_date]
+    table_dates = [i[4] for i in data]
+    result = (table_dates.index(dates[1]) - table_dates.index(dates[0])) + 1
+    view.print_message(result)
 
 def sum_transactions_between():
-    view.print_error_message("Not implemented yet.")
-
+    start_date = view.get_input('Enter start date')
+    end_date = view.get_input('Enter end date')
+    data = list(sales.data_read())
+    data = data[0]
+    dates = [start_date,end_date]
+    table_dates = [i[4] for i in data]
+    start_index = table_dates.index(dates[0])
+    end_index = table_dates.index(dates[1])
+    prices = [float(i[3]) for i in data]
+    data_range = prices[start_index:end_index]
+    result = sum(data_range )
+    view.print_message(result)
 
 def run_operation(option):
     if option == 1:
