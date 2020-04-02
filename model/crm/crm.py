@@ -16,10 +16,13 @@ HEADERS = ["id", "name", "email", "subscribed"]
 # table = data_manager.read_table_from_file(DATAFILE, separator=";")
 # table[0] = HEADERS
 
-def get_data():
-    data = data_manager.read_table_from_file(DATAFILE, separator=';')
-    data.insert(0, HEADERS)
-    return data
 
+def get_table():
+    table = data_manager.read_table_from_file(DATAFILE, separator=';')
+    return table, HEADERS
+
+
+def get_Id():
+    return util.generate_id()
 
 

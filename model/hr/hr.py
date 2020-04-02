@@ -13,7 +13,13 @@ from model import data_manager, util
 DATAFILE = "model/hr/hr.csv"
 HEADERS = ["Id", "Name", "Date of birth", "Department", "Clearance"]
 #data = data_manager.read_table_from_file("model/hr/hr.csv", separator=';')
-def get_data():
+
+def data_read():
     data = data_manager.read_table_from_file(DATAFILE, separator=';')
-    data.insert(0, HEADERS)
-    return data
+    return data, HEADERS
+
+def get_ID():
+    return util.generate_id()
+
+def data_write(data):
+    data_manager.write_table_to_file(DATAFILE, data, separator=';')
