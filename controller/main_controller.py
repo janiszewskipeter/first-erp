@@ -33,5 +33,5 @@ def menu():
         except KeyError:
             view.print_error_message("There is no such option!")
         except ValueError:
-            view.print_error_message("Please enter a number!")
+             view.print_error_message("Please enter a number!")
     view.print_message("Good-bye!")
