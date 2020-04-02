@@ -19,7 +19,7 @@ HEADERS = ["id", "name", "email", "subscribed"]
 
 def get_table():
     table = data_manager.read_table_from_file(DATAFILE, separator=';')
-    return table
+    return table, HEADERS
 
 
 def get_Id():

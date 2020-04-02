@@ -4,8 +4,10 @@ from model import data_manager
 
 
 def list_customers():
-    table = crm.get_table()
-    view.print_table(table)
+    data_headers = list(crm.get_table())
+    table = data_headers[0]
+    headers = data_headers[1]
+    view.print_table(table, headers)
 
     
 def add_customer():
