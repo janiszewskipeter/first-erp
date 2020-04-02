@@ -24,7 +24,7 @@ def update_transaction():
     data = data[0]
     ids = [i[0] for i in data]
     Id = view.get_input('Enter Id:\n')
-    if Id not in Ids:
+    if Id not in ids:
         view.print_message("No such Id.")
         return
     index = ids.index(Id)
