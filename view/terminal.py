@@ -74,6 +74,12 @@ def get_input(label):
     return input(label)
 
 # def get_inputs(labels):
+    labels = ['Enter Customer:\n','Enter Customer:\n','Enter Customer:\n','Enter Customer:\n']
+    val1 = imput(labels[0])
+
+    return [val1,val1,val1,val1,]
+
+
 #     """Gets a list of string inputs from the user.
 
 #     Args:

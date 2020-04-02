@@ -1,7 +1,6 @@
 from model.sales import sales
 from view import terminal as view
 
-
 def list_transactions():
     data_headers = list(sales.data_read())
     data = data_headers[0]
@@ -25,9 +24,9 @@ def update_transaction():
     data = data[0]
     ids = [i[0] for i in data]
     Id = view.get_input('Enter Id:\n')
-    # if Id not in Ids:
-    #     view.print_message("No such Id.")
-    #     return
+    if Id not in Ids:
+        view.print_message("No such Id.")
+        return
     index = ids.index(Id)
     customer = view.get_input('Enter Customer:\n')
     product = view.get_input('Enter Product:\n')
@@ -36,7 +35,6 @@ def update_transaction():
     item_to_add = [Id, customer, product, price, date]
     data[index] = item_to_add
     sales.data_write(data)
-    return
     
 def delete_transaction():
     data = list(sales.data_read())
@@ -47,21 +45,16 @@ def delete_transaction():
     ids = [i[0] for i in data]
     index = ids.index(id_to_delete)
     del data[index]
-    print(data)
     sales.data_write(data)
     
-
 def get_biggest_revenue_transaction():
     data = list(sales.data_read())
-    print(data)
     data = data[0]
     headers = data[1]
     prices = [float(i[3]) for i in data]
     max_price = max(prices)
     index = prices.index(max_price)
     data = data[index]
-    print(headers)
-    print(data)
     view.print_table(data, headers)
 
 def get_biggest_revenue_product():
@@ -77,7 +70,6 @@ def get_biggest_revenue_product():
     result = products[max_rerevenue_index]
     view.print_message(result)
     
-    
 def count_transactions_between():
     start_date = view.get_input('Enter start date')
     end_date = view.get_input('Enter end date')
@@ -85,7 +77,6 @@ def count_transactions_between():
     data = data[0]
     dates = [start_date,end_date]
     table_dates = [i[4] for i in data]
-    print(table_dates)
     result = (table_dates.index(dates[1]) - table_dates.index(dates[0])) + 1
     view.print_message(result)
 
