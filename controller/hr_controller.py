@@ -46,10 +46,6 @@ def update_employee():
 def delete_employee():
     data_headers = list(hr.data_read())
     data = data_headers[0]
-<<<<<<< HEAD
-=======
-    print(data)
->>>>>>> 5d6c10897a4a88fd49d56f27f1ed214e5c99d623
     to_del = int(input("Select employee to delete:\n"))
     del data[to_del-1]
     hr.data_write(data)
@@ -84,10 +80,6 @@ def get_oldest_and_youngest():
     print("")
     print("The youngest employee is:")
     view.print_table([data[index_young]], headers)
-<<<<<<< HEAD
-
-=======
->>>>>>> 5d6c10897a4a88fd49d56f27f1ed214e5c99d623
 def get_average_age():
     data_headers = list(hr.data_read())
     data = data_headers[0]
@@ -113,11 +105,7 @@ def get_average_age():
         ages.append(age)
     average = sum(ages)/len(ages)
     print("The average age of employees is:")
-<<<<<<< HEAD
     print(round(average,2))
-=======
-    print(average)
->>>>>>> 5d6c10897a4a88fd49d56f27f1ed214e5c99d623
 
 
 def next_birthdays():
